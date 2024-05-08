@@ -1,7 +1,5 @@
-@extends('mainLayout.auth')
-
-@section('form')
-<h1 class="text-2xl font-semibold">Sign Up</h1>
+<x-layouts.authLayout>
+    <h1 class="text-2xl font-semibold">Sign Up</h1>
 <form action="#" class="flex flex-col items-center p-8 gap-y-6 border rounded font-cabin shadow-md">
     @csrf
     <div class="flex flex-col">
@@ -32,4 +30,4 @@
         </small>
     </div>
 </form>
-@endsection
+</x-layouts.authLayout>
