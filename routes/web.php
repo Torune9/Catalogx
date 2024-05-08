@@ -11,7 +11,8 @@ Route::get('/', function(){
 Route::name('users.')->group(function(){
     Route::get('/users/login',[UserController::class,'login'])->name('login');
     Route::get('/users/register',[UserController::class,'register'])->name('register');
+    Route::get('/users/shop',[ProductController::class,'getShop']);
+    Route::get('/users/products',[ProductController::class,'getProducts']);
 });
 
-Route::get('/products',[ProductController::class,'getProducts']);
 
