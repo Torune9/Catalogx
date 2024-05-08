@@ -9,7 +9,9 @@ export default {
     extend: {
       fontFamily :{
         "deca": "Lexend Deca, sans-serif",
-        "poppins" : "Poppins,sans-serif"
+        "poppins" : "Poppins,sans-serif",
+        "barlow": "Barlow, sans-serif",
+        "roboto" : "Roboto, sans-serif",
       }
     },
   },
