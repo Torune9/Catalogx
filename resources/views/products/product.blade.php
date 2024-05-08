@@ -1,41 +1,98 @@
-@extends('mainLayout.main')
+<x-layouts.mainLayout>
 
-@section('container')
-<h1 class="w-full text-center text-2xl font-bold font-poppins border-b p-2">Shop List</h1>
-<main class="flex flex-wrap justify-center gap-4 w-full h-full mt-5 font-poppins">
-    <div class="flex flex-col shadow-md rounded-t-md overflow-hidden">
-        <div class="flex flex-row items-center w-80 h-52 overflow-hidden relative">
-            <picture class="h-full w-full flex justify-center items-center">
-                <div class="block slide">
-                    <img src="{{ asset('img/car.jpg') }}" alt="">
-                </div>
-                <div class="hidden slide">
-                    <img src="https://source.unsplash.com/400x600?computer" alt="">
-                </div>
-                <div class="hidden slide">
-                    <img src="https://source.unsplash.com/400x600?sky" alt="">
-                </div>
-                <div class="hidden slide">
-                    <img src="https://source.unsplash.com/400x600?earth" alt="">
-                </div>
-            </picture>
-            <div class="absolute min-w-full flex justify-between text-white p-2">
-                <button id="prevBtn"
-                    class="text-xl font-black rounded-full h-8 w-8 bg-black/50 border border-black hover:bg-white/50 transition-colors duration-300 hover:border-none hover:text-black">
-                    <p>&lt;</p>
-                </button>
-                <button id="nextBtn"
-                    class="text-xl font-black rounded-full h-8 w-8 bg-black/50 border border-black hover:bg-white/50 transition-colors duration-300 hover:border-none hover:text-black">
-                    <p>&gt;</p>
-                </button>
+    <header class="border-b p-16 pl-48 pr-48 flex items-center justify-center flex-col font-poppins">
+        <h1 class="text-7xl font-roboto font-black text-blue-900">CATALOG</h1>
+        <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus eveniet delectus excepturi ipsum officia dolorum sed, earum incidunt dolore quibusdam? Officiis, tempore libero doloremque quas voluptatibus accusamus nemo ipsum fuga.</p>
+    </header>
+
+    <main class="flex flex-wrap justify-center gap-4 w-full h-full mt-5 font-poppins">
+        <div class="shadow-md p-2 rounded-t overflow-hidden w-64 h-64 flex justify-center flex-col items-center">
+            <div class="h-3/4 w-3/4 flex justify-center items-center overflow-hidden rounded-full">
+                <picture>
+                    <img src="https://source.unsplash.com/400x400?food" alt="">
+                </picture>
+            </div>
+            <div class="p-2 font-deca">
+                <h1 class="font-black text-center">FOOD</h1>
+                <p>Rp 1.000.000</p>
             </div>
         </div>
-        <div class="p-2">
-            <h1 class="font-bold">
-                <a href="">Bandung Elektronik</a>
-            </h1>
-            <small>since : 1994</small>
+        <div class="shadow-md p-2 rounded-t overflow-hidden w-64 h-64 flex justify-center flex-col items-center">
+            <div class="h-3/4 w-3/4 flex justify-center items-center overflow-hidden rounded-full">
+                <picture>
+                    <img src="https://source.unsplash.com/400x400?food" alt="">
+                </picture>
+            </div>
+            <div class="p-2 font-deca">
+                <h1 class="font-black text-center">FOOD</h1>
+                <p>Rp 1.000.000</p>
+            </div>
         </div>
-    </div>
-</main>
-@endsection
+        <div class="shadow-md p-2 rounded-t overflow-hidden w-64 h-64 flex justify-center flex-col items-center">
+            <div class="h-3/4 w-3/4 flex justify-center items-center overflow-hidden rounded-full">
+                <picture>
+                    <img src="https://source.unsplash.com/400x400?car" alt="">
+                </picture>
+            </div>
+            <div class="p-2 font-deca">
+                <h1 class="font-black text-center">CAR</h1>
+                <p>Rp 1.000.000</p>
+            </div>
+        </div>
+        <div class="shadow-md p-2 rounded-t overflow-hidden w-64 h-64 flex justify-center flex-col items-center">
+            <div class="h-3/4 w-3/4 flex justify-center items-center overflow-hidden rounded-full">
+                <picture>
+                    <img src="https://source.unsplash.com/400x400?game" alt="">
+                </picture>
+            </div>
+            <div class="p-2 font-deca">
+                <h1 class="font-black text-center">GAME</h1>
+                <p>Rp 1.000.000</p>
+            </div>
+        </div>
+        <div class="shadow-md p-2 rounded-t overflow-hidden w-64 h-64 flex justify-center flex-col items-center">
+            <div class="h-3/4 w-3/4 flex justify-center items-center overflow-hidden rounded-full">
+                <picture>
+                    <img src="https://source.unsplash.com/400x400?food" alt="">
+                </picture>
+            </div>
+            <div class="p-2 font-deca">
+                <h1 class="font-black text-center">FOOD</h1>
+                <p>Rp 1.000.000</p>
+            </div>
+        </div>
+        <div class="shadow-md p-2 rounded-t overflow-hidden w-64 h-64 flex justify-center flex-col items-center">
+            <div class="h-3/4 w-3/4 flex justify-center items-center overflow-hidden rounded-full">
+                <picture>
+                    <img src="https://source.unsplash.com/400x400?food" alt="">
+                </picture>
+            </div>
+            <div class="p-2 font-deca">
+                <h1 class="font-black text-center">FOOD</h1>
+                <p>Rp 1.000.000</p>
+            </div>
+        </div>
+        <div class="shadow-md p-2 rounded-t overflow-hidden w-64 h-64 flex justify-center flex-col items-center">
+            <div class="h-3/4 w-3/4 flex justify-center items-center overflow-hidden rounded-full">
+                <picture>
+                    <img src="https://source.unsplash.com/400x400?car" alt="">
+                </picture>
+            </div>
+            <div class="p-2 font-deca">
+                <h1 class="font-black text-center">CAR</h1>
+                <p>Rp 1.000.000</p>
+            </div>
+        </div>
+        <div class="shadow-md p-2 rounded-t overflow-hidden w-64 h-64 flex justify-center flex-col items-center">
+            <div class="h-3/4 w-3/4 flex justify-center items-center overflow-hidden rounded-full">
+                <picture>
+                    <img src="https://source.unsplash.com/400x400?game" alt="">
+                </picture>
+            </div>
+            <div class="p-2 font-deca">
+                <h1 class="font-black text-center">GAME</h1>
+                <p>Rp 1.000.000</p>
+            </div>
+        </div>
+    </main>
+</x-layouts.mainLayout>
