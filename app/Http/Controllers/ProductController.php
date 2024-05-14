@@ -6,10 +6,8 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function getShop(){
-        return view('products.shops');
-    }
-    public function getProducts(){
-        return view('products.product');
+   
+    public function getCatalogs(){
+        return view('user.catalogs');
     }
 }
