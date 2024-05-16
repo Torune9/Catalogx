@@ -47,7 +47,7 @@ class UserController extends Controller
 
             return redirect()
                 ->route('users.register')
-                ->with('failed-info', 'Gagal register :' . $err->errorInfo[2]);
+                ->with('failed-info', 'Gagal register');
         }
     }
 
