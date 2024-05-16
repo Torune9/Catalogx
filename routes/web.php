@@ -16,6 +16,11 @@ Route::name('users.')->group(function(){
     Route::get('/users/profile/catalogs',[ProductController::class,'getCatalogs'])->name('catalogs');
 });
 
+Route::name('auth')->group(function(){
+    Route::post('/auth/register',[UserController::class,'userRegister']);
+    Route::post('/auth/login',[UserController::class,'userLogin']);
+});
+
 Route::get('/stores',[StoresController::class,'getStores']);
 ;
 
