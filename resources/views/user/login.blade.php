@@ -2,7 +2,7 @@
     @if (session('success-info') || session('failed-info'))
     <small
         class="{{ session('failed-info') ? 'bg-red-300 text-red-600' : 'bg-green-200 text-green-600' }}  p-2 rounded ">
-        {{ session('info') }}
+        {{ session('failed-info') ?? session('success-info') }}
     </small>
     @endif
     <h1 class="text-2xl font-semibold">Login Form</h1>
