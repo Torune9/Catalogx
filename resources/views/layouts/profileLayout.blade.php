@@ -11,12 +11,13 @@
         rel="stylesheet">
     @vite('resources/css/app.css')
     <title>Document</title>
+    <link rel="stylesheet" href="{{ asset('fontawesome-free-6.5.2-web/css/all.min.css') }}">
 </head>
 <body>
-   <x-navigation.sidebar/>
+   @include('navigation.sidebar')
 
     <main class="w-full h-full pl-72 p-4">
-        {{ $slot }}
+       @yield('profile')
     </main>
 </body>
 </html>

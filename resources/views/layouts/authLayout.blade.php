@@ -16,7 +16,7 @@
 
 <body>
     <main class="w-screen h-screen flex flex-col justify-center items-center gap-y-5 font-deca">
-       {{ $slot }}
+       @yield('auth')
     </main>
 </body>
 
