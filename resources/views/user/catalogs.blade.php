@@ -17,16 +17,16 @@
 </header>
 <p class="text-center mb-10 p-10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus eveniet
     delectus excepturi ipsum officia dolorum sed, earum incidunt dolore quibusdam? Officiis, tempore libero doloremque
-    quas voluptatibus accusamus nemo ipsum fuga.</p>
-<button
-    class="bg-green-600 p-4 w-40 rounded fixed bottom-2 right-2 font-semibold hover:bg-green-700 text-white font-deca z-20">Add
-    Product</button>
+    quas voluptatibus accusamus nemo ipsum fuga.
+</p>
+@if ($errors->any())
+    <small class="text-red-200 bg-red-600 p-2 rounded">
+        Gagal menambah product
+    </small>
+@endif
 <main class="flex flex-wrap justify-center gap-4 w-full h-full mt-5 font-poppins">
     <div class="shadow-md p-2 rounded-t overflow-hidden w-64 h-72 flex justify-center flex-col items-center relative">
-        <button
-            class="absolute top-2 right-2 bg-red-700 rounded p-2 text-white hover:bg-red-500 transition-colors duration-300">
-            <i class="fa-solid fa-trash-can"></i>
-        </button>
+        <x-modal.popup-modal></x-modal.popup-modal>
         <div class="h-3/4 w-3/4 flex justify-center items-center overflow-hidden rounded-full">
             <picture>
                 <img class="h-full w-full" src="https://source.unsplash.com/600x600?food" alt="">
@@ -43,10 +43,7 @@
         </div>
     </div>
     <div class="shadow-md p-2 rounded-t overflow-hidden w-64 h-72 flex justify-center flex-col items-center relative">
-        <button
-            class="absolute top-2 right-2 bg-red-700 rounded p-2 text-white hover:bg-red-500 transition-colors duration-300">
-            <i class="fa-solid fa-trash-can"></i>
-        </button>
+        <x-modal.popup-modal></x-modal.popup-modal>
         <div class="h-3/4 w-3/4 flex justify-center items-center overflow-hidden rounded-full">
             <picture>
                 <img class="h-full w-full" src="https://source.unsplash.com/600x600?food" alt="">
@@ -63,10 +60,7 @@
         </div>
     </div>
     <div class="shadow-md p-2 rounded-t overflow-hidden w-64 h-72 flex justify-center flex-col items-center relative">
-        <button
-            class="absolute top-2 right-2 bg-red-700 rounded p-2 text-white hover:bg-red-500 transition-colors duration-300">
-            <i class="fa-solid fa-trash-can"></i>
-        </button>
+        <x-modal.popup-modal></x-modal.popup-modal>
         <div class="h-3/4 w-3/4 flex justify-center items-center overflow-hidden rounded-full">
             <picture>
                 <img class="h-full w-full" src="https://source.unsplash.com/600x600?car" alt="">
@@ -83,4 +77,5 @@
         </div>
     </div>
 </main>
+<x-modal.catalog-modal />
 @endsection
