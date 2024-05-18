@@ -13,7 +13,7 @@ Route::name('users.')->group(function(){
     Route::get('/users/login',[UserController::class,'login'])->name('login');
     Route::get('/users/register',[UserController::class,'register'])->name('register');
     Route::get('/users/profile/username',[UserController::class,'profile'])->name(('profile'));
-    Route::get('/users/profile/catalogs',[ProductController::class,'getCatalogs'])->name('catalogs');
+    Route::get('/users/profile/catalogs',[ProductController::class,'getProducts'])->name('catalogs');
 });
 
 Route::name('auth')->group(function(){
@@ -21,7 +21,10 @@ Route::name('auth')->group(function(){
     Route::post('/auth/login',[UserController::class,'userLogin']);
 });
 
+Route::name('product')->group(function(){
+    Route::post('/product/add',[ProductController::class,'createProduct']);
+});
+
 Route::get('/stores',[StoresController::class,'getStores']);
-;
 
 
