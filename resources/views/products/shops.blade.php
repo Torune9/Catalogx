@@ -1,8 +1,8 @@
 @extends('layouts.mainLayout')
 @section('main')
-<main class=" mt-10 w-full h-full flex flex-wrap gap-2 items-center justify-center font-poppins">
+<main class="mt-24 w-full h-full flex flex-wrap gap-2 items-center justify-center font-poppins">
     <div class="flex flex-col w-full border-b p-2 mb-5">
-        <h1 class="text-center text-5xl font-black font-deca">STORES</h1>
+        <h1 class="text-center text-5xl font-black font-deca text-green-900">STORES</h1>
         <form class="relative flex flex-row items-center group font-deca">
             <label for="search" class="absolute top-2 left-2 "><i class="fa-solid fa-magnifying-glass"></i></label>
             <input type="text" name="search" id="search"
