@@ -1,12 +1,10 @@
 @extends('layouts.profileLayout')
 @section('profile')
-<div class="flex flex-row items-center overflow-hidden rounded-2xl gap-2">
-    <picture class="h-screen w-3/5">
-        <div class="h-full w-full">
-            <img class="h-full w-full" src="https://source.unsplash.com/400x400?sky" alt="">
-        </div>
+<div class="flex flex-row items-center overflow-hidden rounded-2xl gap-2 h-screen">
+    <picture class="h-full w-3/5">
+        <img class="h-full w-full" src="https://source.unsplash.com/400x400?sky" alt="">
     </picture>
-    <div class="w-2/5 h-screen flex flex-col justify-center relative">
+    <div class="w-2/5 h-full flex flex-col justify-center relative">
         <div class="p-2">
             <h1 class="text-6xl font-deca font-black">Rahman<span class="text-blue-800 inline-block">Nurhayadi</span>
             </h1>
