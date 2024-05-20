@@ -13,7 +13,12 @@ class ProductController extends Controller
 
     public function getProducts()
     {
-        return view('user.catalogs');
+         try{
+             $products = Product::orderBy('updated_at','desc')->get();
+             return view('user.catalogs',compact('products'));
+         }catch(QueryException $err){
+            return view('user.catalogs')->with('isNullProd',false);
+         }
     }
 
     public function createProduct(Request $request)
@@ -23,7 +28,7 @@ class ProductController extends Controller
             'name' => 'required',
             'image' => [
                 'required',
-                'file',
+                'image',
                 File::types(['jpg', 'png', 'jpeg'])->max(5 * 1024)
             ],
             'stock' => 'required',
@@ -59,5 +64,12 @@ class ProductController extends Controller
         } catch (QueryException $err) {
             dd($err);
         }
+    }
+    public function showUpdateProduct(Request $request)
+    {
+        $id = $request->route('id');
+        $detail_product = Product::find($id);
+        return view('products.catalogUpdate',compact('detail_product'));
+
     }
 }
