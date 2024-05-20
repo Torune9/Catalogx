@@ -4,7 +4,7 @@
         <ul class="flex justify-evenly items-center gap-x-2 text-sm text-red-700">
             <li
                 class="p-2 rounded hover:bg-black/10 hover:text-white transition-colors duration-300 {{ request()->is('stores') ? 'bg-black/10' : 'bg-transparent' }}">
-                <a href="/stores">
+                <a href="{{ route('routes.shops') }}">
                     Stores
                 </a>
             </li>
@@ -16,13 +16,13 @@
             </li>
             <li
                 class="p-2 rounded hover:bg-black/10 hover:text-white transition-colors duration-300 {{ request()->is('profile/username') ? 'bg-black/50' : 'bg-transparent' }}">
-                <a href="/users/profile/username">
+                <a href="/users/profile/{{ session('auth-user') }}/{{ session('auth-id') }}">
                     <i class="fa-solid fa-id-badge fa-xl"></i>
                 </a>
             </li>
             <li
                 class="p-2 rounded hover:bg-black/10 hover:text-white transition-colors duration-300 {{ request()->is('profile/username') ? 'bg-black/50' : 'bg-transparent' }}">
-                <a href="/users/profile/username">
+                <a href="{{ route('users.logout') }}">
                     <i class="fa-solid fa-right-from-bracket"></i>
                 </a>
             </li>
