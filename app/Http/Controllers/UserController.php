@@ -61,9 +61,16 @@ class UserController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect('/stores');
+            session([
+                'auth-user'=> Auth::user()->name,
+                'auth-id'=>Auth::id()
+            ]);
+            return redirect('/stores/shops');
         }
 
         return redirect()->route('users.login')->with('failed-info', 'Email atau password salah.');
+    }
+    public Function detailUser(Request $request){
+        return view('user.detailUser');
     }
 }
