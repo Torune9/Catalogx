@@ -53,7 +53,7 @@
                                 </p>
                             @enderror
                     </div>
-                    <div>
+                    <div class="hidden">
                         <label for="name"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">userId</label>
                         <input value="1" type="hidden" name="userId" id="image"
