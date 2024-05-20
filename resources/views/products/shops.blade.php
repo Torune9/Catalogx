@@ -2,7 +2,9 @@
 @section('main')
 <main class="mt-24 w-full h-full flex flex-wrap gap-2 items-center justify-center font-poppins">
     <div class="flex flex-col w-full border-b p-2 mb-5">
-        <h1 class="text-center text-5xl font-black font-deca text-green-900">STORES</h1>
+        <h1 class="text-center text-5xl font-black font-deca text-green-900">
+            STORES
+        </h1>
         <form class="relative flex flex-row items-center group font-deca">
             <label for="search" class="absolute top-2 left-2 "><i class="fa-solid fa-magnifying-glass"></i></label>
             <input type="text" name="search" id="search"
@@ -11,9 +13,9 @@
                 class="bg-red-700 p-2 rounded-r text-sm text-white border border-l-0  group-hover:border-black transition-colors duration-300 hover:bg-red-500">search</button>
         </form>
     </div>
-    <div id="default-carousel" class="relative w-96 shadow-lg rounded overflow-hidden" data-carousel="slide">
+    <div id="default-carousel" class="relative w-96 shadow-lg rounded overflow-hidden p-4" data-carousel="slide">
         <!-- Carousel wrapper -->
-        <div class="relative h-56 overflow-hidden">
+        <div class="relative h-56 overflow-hidden rounded">
             <!-- Item 1 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
                 <img src="{{ asset('img/car.jpg') }}"
@@ -83,7 +85,7 @@
         {{-- Info Toko --}}
         <div class="p-2 flex flex-col gap-2">
             <h1 class="font-bold text-2xl hover:underline font-deca">
-                <a href="">
+                <a href="{{ route('users.details') }}">
                     Food Strict
                 </a>
             </h1>
@@ -95,15 +97,11 @@
                     molestias tempora dolore eum dolores eius!
                 </a>
             </p>
-            <button
-                class="bg-green-700 p-2 rounded text-sm font-semibold text-white hover:bg-green-500 duration-300 transition-colors">
-                Order
-            </button>
         </div>
     </div>
-    <div id="default-carousel" class="relative w-96 shadow-lg rounded overflow-hidden" data-carousel="slide">
+    <div id="default-carousel" class="relative w-96 shadow-lg rounded overflow-hidden p-4" data-carousel="slide">
         <!-- Carousel wrapper -->
-        <div class="relative h-56 overflow-hidden">
+        <div class="relative h-56 overflow-hidden rounded">
             <!-- Item 1 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
                 <img src="{{ asset('img/car.jpg') }}"
@@ -185,15 +183,11 @@
                     molestias tempora dolore eum dolores eius!
                 </a>
             </p>
-            <button
-                class="bg-green-700 p-2 rounded text-sm font-semibold text-white hover:bg-green-500 duration-300 transition-colors">
-                Order
-            </button>
         </div>
     </div>
-    <div id="default-carousel" class="relative w-96 shadow-lg rounded overflow-hidden" data-carousel="slide">
+    <div id="default-carousel" class="relative w-96 shadow-lg rounded overflow-hidden p-4" data-carousel="slide">
         <!-- Carousel wrapper -->
-        <div class="relative h-56 overflow-hidden">
+        <div class="relative h-56 overflow-hidden rounded">
             <!-- Item 1 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
                 <img src="{{ asset('img/car.jpg') }}"
@@ -275,10 +269,6 @@
                     molestias tempora dolore eum dolores eius!
                 </a>
             </p>
-            <button
-                class="bg-green-700 p-2 rounded text-sm font-semibold text-white hover:bg-green-500 duration-300 transition-colors">
-                Order
-            </button>
         </div>
     </div>
 </main>
