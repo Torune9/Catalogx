@@ -2,7 +2,7 @@
     <ul class="flex flex-col font-semibold h-1/2 justify-center p-8 gap-5">
         <l1
             class="hover:bg-black/50 transition-colors duration-300 p-2 rounded text-white cursor-pointer {{ request()->is('users/profile/username') ? 'bg-black/30' : 'bg-transparent' }}">
-            <a href="/users/profile/username" class=" inline-block w-full">
+            <a href="{{ route('users.profile') }}" class=" inline-block w-full">
                 <span>
                     <i class="fa-solid fa-house-user"></i>
                 </span>&nbsp;Profile
@@ -10,7 +10,7 @@
         </l1>
         <l1
             class="hover:bg-black/50 transition-colors duration-300 p-2 rounded text-white cursor-pointer {{ request()->is('users/profile/catalogs') ? 'bg-black/30' : 'bg-transparent' }}">
-            <a href="/users/profile/catalogs" class=" inline-block w-full">
+            <a href="{{ route('users.catalogs') }}" class=" inline-block w-full">
                 <span>
                     <i class="fa-solid fa-square-poll-horizontal"></i>
                 </span>&nbsp;Catalogs
