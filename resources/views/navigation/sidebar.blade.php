@@ -1,8 +1,8 @@
 <nav class="border-r fixed w-64 h-screen flex flex-col justify-between font-poppins bg-blue-900">
     <ul class="flex flex-col font-semibold h-1/2 justify-center p-8 gap-5">
         <l1
-            class="hover:bg-black/50 transition-colors duration-300 p-2 rounded text-white cursor-pointer {{ request()->is('users/profile/username') ? 'bg-black/30' : 'bg-transparent' }}">
-            <a href="{{ route('users.profile') }}" class=" inline-block w-full">
+            class="hover:bg-black/50 transition-colors duration-300 p-2 rounded text-white cursor-pointer {{ request()->is('users/profile/') ? 'bg-black/30' : 'bg-transparent' }}">
+            <a href="/users/profile/{{ session('auth-user') }}/{{ session('auth-id') }}" class="inline-block w-full">
                 <span>
                     <i class="fa-solid fa-house-user"></i>
                 </span>&nbsp;Profile
@@ -17,7 +17,7 @@
             </a>
         </l1>
         <l1 class="hover:bg-black/50 transition-colors duration-300 p-2 rounded text-white cursor-pointer">
-            <a href="/stores" class=" inline-block w-full">
+            <a href="{{ route('stores.shops') }}" class=" inline-block w-full">
                 <span>
                     <i class="fa-solid fa-store"></i>
                 </span>&nbsp;Stores
