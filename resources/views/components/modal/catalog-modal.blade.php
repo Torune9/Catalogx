@@ -55,8 +55,8 @@
                     </div>
                     <div class="hidden">
                         <label for="name"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">userId</label>
-                        <input value="1" type="hidden" name="userId" id="image"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">storeId</label>
+                        <input value="{{ $store->id }}" type="hidden" name="storeId" id="storeId"
                             class="rounded-lg border bg-gray-50 w-full"
                             >
                     </div>
@@ -76,8 +76,7 @@
                         <label for="price"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
                         <input type="number" name="price" id="price"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="$2999">
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             @error('price')
                                 <p class="text-red-400 text-[10px]">
                                     {{ $message }}
@@ -90,10 +89,12 @@
                         <select id="category"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="categoryId">
                             <option selected="">Select category</option>
-                            <option value="1">TV/Monitors</option>
-                            <option value="2">PC</option>
-                            <option value="3">Gaming/Console</option>
-                            <option value="4">Phones</option>
+                            @foreach ($categories as $category )
+                                
+                            <option value="{{ $category->id }}">
+                                {{ $category->name }}
+                            </option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-span-2">
@@ -103,11 +104,6 @@
                         <textarea id="description" name="description" rows="4"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Write product description here"></textarea>
-                            @error('description')
-                            <p class="text-red-400 text-[10px]">
-                                {{ $message }}
-                            </p>
-                        @enderror
                     </div>
                 </div>
                 <button type="submit"
