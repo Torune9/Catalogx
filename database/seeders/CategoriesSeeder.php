@@ -24,7 +24,8 @@ class CategoriesSeeder extends Seeder
         ]);
         Categories::create([
             'name' => 'drink'
-        ]); Categories::create([
+        ]); 
+        Categories::create([
             'name' => 'fashion'
         ]);
     }
