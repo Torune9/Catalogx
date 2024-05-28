@@ -3,7 +3,7 @@
 <main class="font-poppins p-10 flex justify-center items-center flex-col border rounded">
     <h1 class="text-2xl mb-2 font-bold">Update for : {{ $detail_product->name }}</h1>
 
-    <form action="#" class="grid gap-2 grid-flow-row">
+    <form action="{{ route('product.updateCatalog',['id' => $detail_product->id]) }}" method="POST" class="grid gap-2 grid-flow-row">
         @csrf
         @method('PUT')
         <div class="w-96">
