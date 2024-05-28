@@ -1,27 +1,43 @@
 @extends('layouts.profileLayout')
 @section('profile')
-@if (session('isNullProd'))
+@if ($isNullProd)
+@if (session('isSuccess'))
+<div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+    <span class="font-medium">Success alert!</span> {{ session('isSuccess') }}.
+  </div>
+@endif
 <header
     class="border-b pl-10 pr-10 flex items-center justify-center flex-col font-poppins mb-2 h-screen relative overflow-hidden pb-20">
     <div
         class="h-72 w-1/2 p-4 flex justify-center flex-col absolute left-0 bottom-10 bg-slate-900/80 border rounded text-white pl-16 font-deca">
-        <h3>Toko Rahman</h3>
+        <h3 class="uppercase">{{ $store->name }}</h3>
         <h1 class="text-6xl font-bold">PRODUCT CATALOG</h1>
-        <h2>2024-2025</h2>
+        <h2><span>({{ $store->from_date }})</span>&nbsp;<span>({{ $store->to_date }})</span></h2>
     </div>
     <div class="w-full h-full overflow-hidden rounded-md shadow-2xl">
-        <img class="w-full h-full object-cover " src="https://source.unsplash.com/600x600?artist" alt="">
+        <img class="w-full h-full object-cover " src="{{ asset('storage/img/uploads/profile/'.$store->image) }}" alt="">
         <button class="absolute top-4 right-14 text-black/50 hover:text-black transition-colors duration-300">
             <i class="fa-solid fa-camera-retro fa-2xl"></i>
         </button>
     </div>
 </header>
-<p class="text-center mb-10 p-10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus eveniet
-    delectus excepturi ipsum officia dolorum sed, earum incidunt dolore quibusdam? Officiis, tempore libero doloremque
-    quas voluptatibus accusamus nemo ipsum fuga.
+<p class="text-center mb-10 p-10">Katalog produk adalah alat penting dalam bisnis, baik secara fisik maupun digital, yang menampilkan berbagai produk atau layanan yang ditawarkan oleh toko. Sebuah katalog yang dirancang dengan baik dapat memberikan informasi yang jelas dan menarik bagi pelanggan, membantu anda membuat keputusan pembelian yang lebih mudah dan cepat.
 </p>
-@if ($errors->any())
-<div class="flex items-center p-4 mb-10 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+    @if ($errors->any())
+    <div class="flex items-center p-4 mb-10 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+        role="alert">
+        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor" viewBox="0 0 20 20">
+            <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+        </svg>
+        <span class="sr-only">Info</span>
+        <div>
+            <span class="font-medium">Failed to add product!</span> a few things up and try submitting again.
+        </div>
+    </div>
+    @elseif(session('success-info'))
+    <div class="flex items-center p-4 mb-10 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800"
     role="alert">
     <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
         fill="currentColor" viewBox="0 0 20 20">
@@ -30,16 +46,15 @@
     </svg>
     <span class="sr-only">Info</span>
     <div>
-        <span class="font-medium">Failed to add product!</span> <a href="{{ route('product.updateCatalog') }}">
-            update
-        </a> a few things up and try submitting again.
+        <span class="font-medium">Success!</span>
+        </a> {{ session('success-info') }}
     </div>
 </div>
-@endif
+    @endif
 <main class="flex flex-wrap justify-center gap-4 w-full h-full mt-5 font-poppins">
     @foreach ($products as $catalog)
     <div class="shadow-md p-2 rounded-t overflow-hidden w-64 h-78 flex justify-center flex-col items-center relative">
-        <x-modal.popup-modal></x-modal.popup-modal>
+        <x-modal.popup-modal :id="$catalog->id"></x-modal.popup-modal>
         <div class="h-40 w-40 flex justify-center items-center overflow-hidden rounded-full">
             <picture class="h-full w-full">
 
@@ -54,20 +69,22 @@
         </div>
         <div class="p-2 w-full font-poppins">
             <h1 class="font-black text-center">{{ $catalog->name }}</h1>
-            <p class="text-sm">Harga : Rp {{ $catalog->price }}</p>
+            <p class="text-sm">
+                Harga : Rp {{ number_format($catalog->price, 0, ',', '.') }}
+            </p>
             <p class="text-sm">Stock : {{ $catalog->stock }}</p>
         </div>
         <div class="w-full text-right">
-            <button class="font-deca bg-green-800 text-sm p-2 w-40 rounded text-white font-semibold">
-                <a href="{{ route('product.updateCatalog',['id' => $catalog->id]) }}">
+            <a href="{{ route('product.updateCatalog',['id' => $catalog->id]) }}">
+                <button class="font-deca bg-green-800 text-sm p-2 w-40 rounded text-white font-semibold">
                     update
-                </a>
-            </button>
+                </button>
+            </a>
         </div>
     </div>
     @endforeach
 </main>
-<x-modal.catalog-modal />
+<x-modal.catalog-modal :store="$store" :categories="$categories"/>
 @else
 <div class="h-screen w-full flex flex-col justify-center items-center gap-4 font-poppins">
     <h1 class="text-3xl font-bold text-black/20">
