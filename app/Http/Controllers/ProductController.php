@@ -2,27 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Categories;
+use Exception;
+use App\Models\User;
 use App\Models\Product;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\File;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rules\File;
 
 class ProductController extends Controller
 {
 
-    public function getProducts()
-    {
-         try{
-             $products = Product::orderBy('updated_at','desc')->get();
-             return view('user.catalogs',compact('products'));
-         }catch(QueryException $err){
-            return view('user.catalogs')->with('isNullProd',false);
+    public function getProducts(){
+        $isNullProd = true;
+        try{
+            $id = Auth::user()->id;
+            $user = User::find($id);
+            $store = $user->store;
+            $categories = Categories::all();
+            
+           if ($user->store == null) {
+               return view('user.catalogs',[
+                   'isNullProd' => !$isNullProd
+               ]);
+           }
+             $products = $store->catalogs()->orderBy('updated_at','desc')->get();
+             return view('user.catalogs',compact('products','isNullProd','store','categories'));
+         }catch(Exception $err){
+            return view('user.catalogs',[
+                'isNullProd' => !$isNullProd
+            ]);
          }
     }
 
-    public function createProduct(Request $request)
-    {
+    public function createProduct(Request $request){
 
         $validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -33,9 +48,8 @@ class ProductController extends Controller
             ],
             'stock' => 'required',
             'price' => 'required',
-            'userId' => 'required',
+            'storeId' => 'required',
             'categoryId' => 'required',
-            'description' => 'required|min:20'
         ]);
     
         
@@ -54,7 +68,7 @@ class ProductController extends Controller
                 'stock' => $request->stock,
                 'image' => $file_name,
                 'description' => $request->description,
-                'user_id' => $request->input('userId'),
+                'store_id' => $request->input('storeId'),
                 'category_id' => $request->categoryId
             ]);
 
@@ -65,8 +79,61 @@ class ProductController extends Controller
             dd($err);
         }
     }
-    public function showUpdateProduct(Request $request)
-    {
+
+    public function updateProduct(Request $request){
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'image' => [
+                'image',
+                File::types(['jpg', 'png', 'jpeg'])->max(5 * 1024)
+            ],
+            'stock' => 'required',
+            'price' => 'required',
+        ]);
+
+        $id = $request->route('id');
+        
+        if ($validator->fails()) {
+            return redirect('/users/profile/catalogs')->withErrors($validator);
+        }
+    
+        
+        try {
+            $product = Product::find($id);
+            
+            $product->name = $request->name;
+            $product->stock = $request->stock;
+            $product->price = $request->price;
+            
+            if ($request->file('image') != null) {
+                $file = $request->file('image');
+                $original_name = $file->getClientOriginalName();
+                $file_name = time() . '_' . $original_name;
+                $product->image = $file_name;
+                $file->storeAs('public/img/uploads', $file_name);
+           }
+           $product->save();
+
+
+            return redirect('/users/profile/catalogs')->with('success-info','Product berhasil di update');
+        } catch (QueryException $err) {
+            dd($err);
+        }
+    }
+
+    public function deleteProduct(Request $request){
+        $id = $request->route('id');
+        try {
+            $product = Product::find($id);
+            $product->delete();
+            return redirect('/users/profile/catalogs')->with('success-info','Product berhasil di hapus');
+        } catch (Exception $err) {
+            dd($err);
+        }
+
+    }
+    
+    public function showUpdateProduct(Request $request){
         $id = $request->route('id');
         $detail_product = Product::find($id);
         return view('products.catalogUpdate',compact('detail_product'));
