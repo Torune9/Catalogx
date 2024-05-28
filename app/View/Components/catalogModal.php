@@ -12,7 +12,8 @@ class catalogModal extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public string $data,
+        public string $store,
+        public string $categories,
     )
     {
         //
