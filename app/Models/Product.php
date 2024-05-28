@@ -15,7 +15,13 @@ class Product extends Model
         'stock',
         'image',
         'description',
-        'user_id',
+        'store_id',
         'category_id',
     ];
+    public function store(){
+        return $this->belongsTo(Stores::class);
+    }
+    public function category(){
+        return $this->belongsTo(Categories::class);
+    }
 }
