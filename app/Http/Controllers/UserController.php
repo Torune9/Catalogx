@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Stores;
 use App\Models\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -70,7 +71,9 @@ class UserController extends Controller
 
         return redirect()->route('users.login')->with('failed-info', 'Email atau password salah.');
     }
-    public Function detailUser(Request $request){
-        return view('user.detailUser');
+    public Function detailUser($id){
+        $store = Stores::find($id);
+        $products = $store->catalogs()->orderBy('updated_at','desc')->get();
+        return view('user.detailUser',compact('store','products'));
     }
 }
