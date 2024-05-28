@@ -11,7 +11,17 @@ class Stores extends Model
 
     protected $fillable = [
         'name',
-        'date',
-        'image'
+        'user_id',
+        'image',
+        'description',
+        'from_date',
+        'to_date',
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+    public function catalogs(){
+        return $this->hasMany(Product::class,'store_id');
+    }
 }
