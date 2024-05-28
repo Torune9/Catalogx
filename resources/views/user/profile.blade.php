@@ -2,13 +2,14 @@
 @section('profile')
 <div class="flex flex-row items-center overflow-hidden rounded-2xl gap-2 h-screen">
     <picture class="h-full w-3/5">
-        <img class="h-full w-full" src="https://source.unsplash.com/400x400?sky" alt="">
+        <img class="h-full w-full" src="https://source.unsplash.com/400x400?food" alt="">
     </picture>
     <div class="w-2/5 h-full flex flex-col justify-center relative">
         <div class="p-2">
-            <h1 class="text-6xl font-deca font-black">Rahman<span class="text-blue-800 inline-block">Nurhayadi</span>
+            <h1 class="text-6xl font-deca font-black text-red-600">
+                {{ Auth::user()->name ?? 'user' }}
             </h1>
-            <h3 class="font-sm font-poppins text-black">rahman@gmail.com</h3>
+            <h3 class="font-sm font-poppins text-black">{{ Auth::user()->email ?? 'user@gmail.com' }}</h3>
         </div>
         <p class="text-justify font-deca p-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
             reiciendis et itaque adipisci aperiam, non omnis saepe sequi eveniet explicabo commodi, quasi temporibus
