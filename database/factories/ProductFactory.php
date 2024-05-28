@@ -22,7 +22,7 @@ class ProductFactory extends Factory
             'stock' => fake()->randomNumber(3,false),
             'image' => fake()->imageUrl(640, 480, 'animals', true),
             'description' => fake()->sentence(),
-            'user_id' => fake()->randomDigit(),
+            'store_id' => fake()->randomDigit(),
             'category_id' => fake()->randomDigit(),
 
         ];
