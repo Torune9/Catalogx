@@ -76,4 +76,9 @@ class UserController extends Controller
         $products = $store->catalogs()->orderBy('updated_at','desc')->get();
         return view('user.detailUser',compact('store','products'));
     }
+
+    public function logout(){
+        session()->flush();
+        return redirect('/');
+    }
 }
