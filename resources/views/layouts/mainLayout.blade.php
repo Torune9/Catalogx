@@ -12,7 +12,7 @@
         rel="stylesheet">
         @vite(['resources/css/app.css','resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('fontawesome-free-6.5.2-web/css/all.min.css') }}">
-    <title>Document</title>
+    <title>Stores</title>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
     <main class="p-2 pl-8 pr-8">
         @yield('main')
     </main>
-    <script src="{{ asset('js/corousel.js') }}"></script>
+    <script src="{{ asset('js/getCategory.js') }}"></script>
 </body>
 
 </html>
