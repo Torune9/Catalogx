@@ -17,7 +17,7 @@ class IsNotAuthenticated
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::check()) {
-            return redirect()->route('/');
+            return redirect()->route('users.login');
         }
         return $next($request);
     }
