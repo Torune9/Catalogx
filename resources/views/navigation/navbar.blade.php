@@ -4,14 +4,14 @@
     <div class="flex justify-between items-center gap-x-6 te">
         <ul class="flex justify-evenly items-center gap-x-2 text-sm text-red-700">
             <li
-                class="p-2 rounded hover:bg-black/10 hover:text-white transition-colors duration-300 {{ request()->is('stores/shops') ? 'bg-black/10' : 'bg-transparent' }}">
+                class="p-2 rounded hover:bg-black/10 hover:text-white transition-colors duration-300 {{ request()->routeIs('stores.shops') ? 'bg-black/10' : 'bg-transparent' }}">
                 <a href="{{ route('stores.shops') }}">
                     Stores
                 </a>
             </li>
             <li data-tooltip-target="tooltip-default"
                 class="cursor-pointer p-2 rounded hover:bg-black/10 hover:text-white transition-colors duration-300 {{ request()->is('profile/username') ? 'bg-black/50' : 'bg-transparent' }}">
-                <a href="/users/profile/{{ session('auth-user') }}/{{ session('auth-id') }}">
+                <a href="/users/profile/{{ session('auth-user') }}">
                     <i class="fa-solid fa-id-badge fa-xl"></i>
                 </a>
 
@@ -24,7 +24,7 @@
             </li>
             <li
                 class="p-2 rounded hover:bg-black/10 hover:text-white transition-colors duration-300 {{ request()->is('profile/username') ? 'bg-black/50' : 'bg-transparent' }}">
-                <a href="#">
+                <a href="{{ route('users.logout') }}">
                     <i class="fa-solid fa-right-from-bracket"></i>
                 </a>
             </li>
