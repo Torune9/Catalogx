@@ -13,27 +13,28 @@
                 class="bg-red-700 p-2 rounded-r text-sm text-white border border-l-0  group-hover:border-black transition-colors duration-300 hover:bg-red-500">search</button>
         </form>
     </div>
-    <div class="w-full flex flex-row justify-evenly pb-10 border-b">
-        <div>
+    <form method="GET" action="{{ route('stores.shops') }}" class="w-full pb-8 border-b flex flex-row items-center" id="form" data-url="{{ url('stores/shops') }}">
+        <div class="flex flex-row items-center w-full gap-x-1">
+            <input type="radio" value="all" name="category" class="cursor-pointer" id="allCategories">
             <label for="category">
                 All Categories
             </label>
-            <input type="radio" value="" name="category" checked class="cursor-pointer">
         </div>
-        @foreach ($categories as $category)
+        <div class="w-full flex flex-row justify-evenly">
+            @foreach($categories as $category)
             <div>
-                <input type="radio" name="category" id="category" value="{{ $category->id }}"class="cursor-pointer" on>
-                <label for="{{ $category->name }}">{{ $category->name }}</label>
+                <input type="radio" name="category" value="{{ $category->id }}">
+                <label for="category">{{ $category->name }}</label>
             </div>
-        @endforeach
-    </div>
+            @endforeach
+
+        </div>
+    </form>
     @foreach ( $stores as $store )
     <div id="default-carousel" class="relative w-96 shadow-lg rounded overflow-hidden p-4" data-carousel="slide">
         <!-- Carousel wrapper -->
         <div class="relative h-56 overflow-hidden rounded">
             @foreach ($store->catalogs as $catalog)
-            {{-- @dd($catalog->image) --}}
-            <!-- Item 1 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
                 <img src="{{ asset('storage/img/uploads/'. $catalog->image) }}"
                     class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
@@ -42,14 +43,13 @@
         </div>
         <!-- Slider indicators -->
         <div class="absolute z-30 w-full flex gap-x-1 justify-center top-48">
-             @foreach ($store->catalogs as $catalog->image)
-             <button type="button" class="w-3 h-3 rounded-full"
-                 data-carousel-slide-to="1"></button>
-             @endforeach
+            @foreach ($store->catalogs as $catalog->image)
+            <button type="button" class="w-3 h-3 rounded-full" data-carousel-slide-to="1"></button>
+            @endforeach
         </div>
         <!-- Slider controls -->
         <button type="button"
-            class="absolute top-20 start-0 z-30 flex items-center justify-center px-4 cursor-pointer group focus:outline-none"
+            class="absolute top-28 start-0 z-30 flex items-center justify-center px-6 cursor-pointer group focus:outline-none"
             data-carousel-prev>
             <span
                 class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-black/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
@@ -62,7 +62,7 @@
             </span>
         </button>
         <button type="button"
-            class="absolute top-20 end-0 z-30 flex items-center justify-center px-4 cursor-pointer group focus:outline-none"
+            class="absolute top-28 end-0 z-30 flex items-center justify-center px-6 cursor-pointer group focus:outline-none"
             data-carousel-next>
             <span
                 class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-black/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
@@ -89,7 +89,11 @@
             </p>
         </div>
     </div>
-
     @endforeach
+    @if ($notFound)
+    <p>
+        {{ $notFound['message'] }}
+    </p>
+    @endif
 </main>
 @endsection
